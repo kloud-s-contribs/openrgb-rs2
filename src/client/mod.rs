@@ -17,9 +17,9 @@ use crate::{
     protocol::{DEFAULT_ADDR, OpenRgbProtocol},
 };
 
-/// Client for the OpenRGB SDK server that provides methods to interact with OpenRGB.
+/// Client for the `OpenRGB` SDK server that provides methods to interact with `OpenRGB`.
 ///
-/// By default, a connection is opened to the OpenRGB server at `127.0.0.1:6742`, using protocol version 5.
+/// By default, a connection is opened to the `OpenRGB` server at `127.0.0.1:6742`, using protocol version 5.
 /// At the time of writing, the latest release (0.9) supports version 4, while the (1.0rc) release supports version 5.0.
 ///
 ///
@@ -29,9 +29,9 @@ pub struct OpenRgbClient {
 }
 
 impl OpenRgbClient {
-    /// Connect to default OpenRGB server.
+    /// Connect to default `OpenRGB` server.
     ///
-    /// Use [OpenRGB::connect_to] to connect to a specific server.
+    /// Use [`OpenRGB::connect_to`] to connect to a specific server.
     ///
     /// # Example
     ///
@@ -50,9 +50,9 @@ impl OpenRgbClient {
         Self::connect_to(DEFAULT_ADDR, DEFAULT_PROTOCOL).await
     }
 
-    /// Connect to OpenRGB server at given coordinates.
+    /// Connect to `OpenRGB` server at given coordinates.
     ///
-    /// Use [OpenRGB::connect] to connect to default server.
+    /// Use [`OpenRGB::connect`] to connect to default server.
     ///
     /// # Arguments
     /// * `addr` - A socket address (eg: a `(host, port)` tuple)
@@ -79,14 +79,14 @@ impl OpenRgbClient {
 }
 
 impl OpenRgbClient {
-    /// Returns all available OpenRGB controllers as a `ControllerGroup`.
+    /// Returns all available `OpenRGB` controllers as a `ControllerGroup`.
     ///
     /// # Errors
     ///
-    /// This function returns an error if communication with the OpenRGB SDK server fails.
+    /// This function returns an error if communication with the `OpenRGB` SDK server fails.
     pub async fn get_all_controllers(&self) -> OpenRgbResult<ControllerGroup> {
         let count = self.proto.get_controller_count().await? as usize;
-        let mut controllers = Vec::with_capacity(count as usize);
+        let mut controllers = Vec::with_capacity(count);
         for id in 0..count {
             let controller = self.get_controller(id).await?;
             controllers.push(controller);
@@ -100,7 +100,7 @@ impl OpenRgbClient {
     ///
     /// # Errors
     ///
-    /// This function returns an error if communication with the OpenRGB SDK server fails.
+    /// This function returns an error if communication with the `OpenRGB` SDK server fails.
     pub async fn get_controllers_of_type(
         &self,
         device_type: DeviceType,
@@ -118,7 +118,7 @@ impl OpenRgbClient {
     ///
     /// # Errors
     ///
-    /// This function returns an error if communication with the OpenRGB SDK server fails.
+    /// This function returns an error if communication with the `OpenRGB` SDK server fails.
     pub async fn get_controller(&self, i: usize) -> OpenRgbResult<Controller> {
         let c_data = self.proto.get_controller(i as u32).await?;
         Ok(Controller::new(i, self.proto.clone(), c_data))
@@ -134,12 +134,12 @@ impl OpenRgbClient {
 
     /// Sets the name for this client's connection.
     ///
-    /// This is viewable in the OpenRGB SDK server tab
+    /// This is viewable in the `OpenRGB` SDK server tab
     pub async fn set_name(&mut self, name: impl Into<String>) -> OpenRgbResult<()> {
         self.proto.set_name(name).await
     }
 
-    /// Returns the available profiles on OpenRGB
+    /// Returns the available profiles on `OpenRGB`
     pub async fn get_profiles(&self) -> OpenRgbResult<Vec<String>> {
         self.proto.get_profiles().await
     }
@@ -159,17 +159,17 @@ impl OpenRgbClient {
         self.proto.delete_profile(name).await
     }
 
-    /// Returns the number of controllers connected to OpenRGB.
+    /// Returns the number of controllers connected to `OpenRGB`.
     pub async fn get_controller_count(&mut self) -> OpenRgbResult<u32> {
         self.proto.get_controller_count().await
     }
 
-    /// Returns a list of available plugins installed on OpenRGB.
+    /// Returns a list of available plugins installed on `OpenRGB`.
     pub async fn get_plugins(&self) -> OpenRgbResult<Vec<PluginData>> {
         self.proto.get_plugins().await
     }
 
-    /// Forces the OpenRGB instance to rescan for devices.
+    /// Forces the `OpenRGB` instance to rescan for devices.
     pub async fn rescan_devices(&self) -> OpenRgbResult<()> {
         self.proto.rescan_devices().await
     }

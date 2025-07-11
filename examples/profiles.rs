@@ -1,9 +1,8 @@
-use std::error::Error;
+use openrgb2::{OpenRgbClient, OpenRgbResult};
 
-use openrgb::OpenRgbClient;
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn Error>> {
+async fn main() -> OpenRgbResult<()> {
     // connect to local server
     let client = OpenRgbClient::connect().await?;
 

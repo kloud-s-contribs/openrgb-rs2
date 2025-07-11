@@ -4,6 +4,7 @@ openrgb-rs2 [![crates.io](https://img.shields.io/crates/v/openrgb.svg)](https://
 **Rust client library for [OpenRGB SDK](https://openrgb.org).**
 
 See [documentation](https://docs.rs/openrgb) and [examples](https://github.com/nicoulaj/openrgb-rs/tree/master/examples).
+This should support all protocol versions from 1 onwards. If you encounter any issues, please open an issue.
 
 # Original openrgb-rs
 

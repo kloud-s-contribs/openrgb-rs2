@@ -8,10 +8,10 @@ use tokio::sync::Mutex;
 use super::data::{Color, ControllerData, ModeData, RawString, SegmentData};
 use crate::{OpenRgbError, OpenRgbResult, PluginData};
 
-/// Default protocol version used by [OpenRGB] client.
+/// Default protocol version used by [`OpenRGB`] client.
 pub const DEFAULT_PROTOCOL: u32 = 5;
 
-/// Default address used by [OpenRGB::connect].
+/// Default address used by [`OpenRGB::connect`].
 pub const DEFAULT_ADDR: (Ipv4Addr, u16) = (Ipv4Addr::LOCALHOST, 6742);
 
 /// Device ID to use when no specific device is targeted.
@@ -25,9 +25,9 @@ mod stream;
 
 pub(crate) use {deserialize::*, packet::*, serialize::*, stream::*};
 
-/// OpenRGB client.
+/// `OpenRGB` client.
 ///
-/// This struct makes sure the protocol_id and the stream are in sync.
+/// This struct makes sure the `protocol_id` and the stream are in sync.
 ///
 /// Todo: reintroduce a generic `stream` type to support sync/async streams.
 #[derive(Clone)]
@@ -37,9 +37,9 @@ pub(crate) struct OpenRgbProtocol {
 }
 
 impl OpenRgbProtocol {
-    /// Connect to OpenRGB server at given coordinates.
+    /// Connect to `OpenRGB` server at given coordinates.
     ///
-    /// Use [OpenRGB::connect] to connect to default server.
+    /// Use [`OpenRGB::connect`] to connect to default server.
     ///
     /// # Arguments
     /// * `addr` - A socket address (eg: a `(host, port)` tuple)
@@ -99,7 +99,7 @@ impl OpenRgbProtocol {
 
     /// Get protocol version negotiated with server.
     ///
-    /// This is the lowest between this client maximum supported version ([DEFAULT_PROTOCOL]) and server version.
+    /// This is the lowest between this client maximum supported version ([`DEFAULT_PROTOCOL`]) and server version.
     ///
     /// See [Open SDK documentation](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/OpenRGB-SDK-Documentation#protocol-versions) for more information.
     pub fn get_protocol_version(&self) -> u32 {
@@ -248,6 +248,7 @@ impl OpenRgbProtocol {
     ///
     /// See [Open SDK documentation](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/OpenRGB-SDK-Documentation#net_packet_id_rgbcontroller_setcustommode) for more information.
     #[allow(unused)] // unused on purpose
+    #[allow(clippy::pedantic)]
     pub async fn set_custom_mode(&self, controller_id: u32) -> OpenRgbResult<()> {
         unimplemented!(
             "Not implemented as per recommendation from OpenRGB devs (https://discord.com/channels/699861463375937578/709998213310054490/1372954035581096158)"

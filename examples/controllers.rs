@@ -1,4 +1,4 @@
-use openrgb::{OpenRgbClient, OpenRgbResult};
+use openrgb2::{OpenRgbClient, OpenRgbResult};
 
 #[tokio::main]
 async fn main() -> OpenRgbResult<()> {

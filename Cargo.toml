@@ -1,6 +1,6 @@
 [package]
-name = "openrgb"
-version = "0.1.1"
+name = "openrgb2"
+version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
 authors = [
@@ -8,9 +8,9 @@ authors = [
     "Arthur de Groot <arthurdegroot99@gmail.com>",
 ]
 description = "OpenRGB SDK client"
-documentation = "https://docs.rs/openrgb"
-homepage = "https://github.com/nicoulaj/openrgb-rs"
-repository = "https://github.com/nicoulaj/openrgb-rs"
+documentation = "https://docs.rs/openrgb2"
+homepage = "https://github.com/Achtuur/openrgb-rs2"
+repository = "https://github.com/Achtuur/openrgb-rs2"
 license = "GPL-2.0"
 keywords = ["RGB", "LED", "gaming"]
 categories = ["network-programming", "game-development"]

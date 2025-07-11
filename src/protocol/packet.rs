@@ -1,17 +1,17 @@
 use crate::impl_enum_discriminant;
 
-/// OpenRGB protocol packet ID.
+/// `OpenRGB` protocol packet ID.
 ///
 /// See [Open SDK documentation](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/OpenRGB-SDK-Documentation#packet-ids) for more information.
 #[derive(PartialEq, Debug, Copy, Clone)]
 pub(crate) enum PacketId {
-    /// Request RGBController device count from server.
+    /// Request `RGBController` device count from server.
     RequestControllerCount = 0,
 
-    /// Request RGBController data block.
+    /// Request `RGBController` data block.
     RequestControllerData = 1,
 
-    /// Request OpenRGB SDK protocol version from server.
+    /// Request `OpenRGB` SDK protocol version from server.
     RequestProtocolVersion = 40,
 
     /// Send client name string to server.
@@ -41,31 +41,31 @@ pub(crate) enum PacketId {
     /// Plugin specific request. (Protocol 4)
     PluginSpecific = 201,
 
-    /// RGBController::ResizeZone().
+    /// `RGBController::ResizeZone()`.
     RGBControllerResizeZone = 1000,
 
-    /// RGBController::ClearSegments(). (Protocol 5)
+    /// `RGBController::ClearSegments()`. (Protocol 5)
     RgbControllerClearSegments = 1001,
 
-    /// RGBController::AddSegment(). (Protocol 5)
+    /// `RGBController::AddSegment()`. (Protocol 5)
     RGBControllerAddSegment = 1002,
 
-    /// RGBController::UpdateLEDs().
+    /// `RGBController::UpdateLEDs()`.
     RGBControllerUpdateLeds = 1050,
 
-    /// RGBController::UpdateZoneLEDs().
+    /// `RGBController::UpdateZoneLEDs()`.
     RGBControllerUpdateZoneLeds = 1051,
 
-    /// RGBController::UpdateSingleLED().
+    /// `RGBController::UpdateSingleLED()`.
     RGBControllerUpdateSingleLed = 1052,
 
-    /// RGBController::SetCustomMode().
+    /// `RGBController::SetCustomMode()`.
     RGBControllerSetCustomMode = 1100,
 
-    /// RGBController::UpdateMode().
+    /// `RGBController::UpdateMode()`.
     RGBControllerUpdateMode = 1101,
 
-    /// RGBController::SaveMode(). (Protocol 3)
+    /// `RGBController::SaveMode()`. (Protocol 3)
     RGBControllerSaveMode = 1102,
 }
 
