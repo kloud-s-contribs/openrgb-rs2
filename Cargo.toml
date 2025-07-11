@@ -11,6 +11,7 @@ description = "OpenRGB SDK client"
 documentation = "https://docs.rs/openrgb2"
 homepage = "https://github.com/Achtuur/openrgb-rs2"
 repository = "https://github.com/Achtuur/openrgb-rs2"
+readme = "README.md"
 license = "GPL-2.0"
 keywords = ["RGB", "LED", "gaming"]
 categories = ["network-programming", "game-development"]
