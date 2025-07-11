@@ -36,12 +36,11 @@ impl OpenRgbClient {
     /// # Example
     ///
     /// ```no_run
-    /// # use openrgb::OpenRGB;
-    /// # use std::error::Error;
+    /// # use openrgb2::{OpenRgbClient, OpenRgbResult};
     /// #
     /// # #[tokio::main]
-    /// # async fn main() -> Result<(), Box<dyn Error>> {
-    /// let client = OpenRGB::connect().await?;
+    /// # async fn main() -> OpenRgbResult<()> {
+    /// let client = OpenRgbClient::connect().await?;
     /// #
     /// # Ok(())
     /// # }
@@ -59,12 +58,11 @@ impl OpenRgbClient {
     ///
     /// # Example
     /// ```no_run
-    /// # use openrgb::OpenRGB;
-    /// # use std::error::Error;
+    /// # use openrgb2::{OpenRgbClient, OpenRgbResult};
     /// #
     /// # #[tokio::main]
-    /// # async fn main() -> Result<(), Box<dyn Error>> {
-    /// let client = OpenRGB::connect_to(("localhost", 6742)).await?;
+    /// # async fn main() -> OpenRgbResult<()> {
+    /// let client = OpenRgbClient::connect_to("127.0.0.1:6379", 5).await?;
     /// #
     /// # Ok(())
     /// # }

@@ -37,25 +37,7 @@ pub(crate) struct OpenRgbProtocol {
 }
 
 impl OpenRgbProtocol {
-    /// Connect to `OpenRGB` server at given coordinates.
-    ///
-    /// Use [`OpenRGB::connect`] to connect to default server.
-    ///
-    /// # Arguments
-    /// * `addr` - A socket address (eg: a `(host, port)` tuple)
-    ///
-    /// # Example
-    /// ```no_run
-    /// # use openrgb::OpenRGB;
-    /// # use std::error::Error;
-    /// #
-    /// # #[tokio::main]
-    /// # async fn main() -> Result<(), Box<dyn Error>> {
-    /// let client = OpenRGB::connect_to(("localhost", 6742)).await?;
-    /// #
-    /// # Ok(())
-    /// # }
-    /// ```
+    /// Connect to `OpenRGB` server at given address with given protocol version.
     pub async fn connect_to(
         addr: impl ToSocketAddrs + Debug + Copy,
         protocol_version: u32,

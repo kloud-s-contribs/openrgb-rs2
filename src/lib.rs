@@ -5,14 +5,16 @@
 //! # Example
 //!
 //! ```no_run
-//! use openrgb::OpenRGB;
+//! use openrgb2::OpenRgbClient;
 //! use std::error::Error;
 //!
 //! #[tokio::main]
 //! async fn main() -> Result<(), Box<dyn Error>> {
 //!
 //!     // connect to default server at localhost
-//!     let client = OpenRGB::connect().await?;
+//!     let client = OpenRgbClient::connect().await?;
+//!     let controllers = client.get_all_controllers().await?;
+//!     controllers.init().await?;
 //!
 //!     Ok(())
 //! }

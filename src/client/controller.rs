@@ -214,22 +214,23 @@ impl Controller {
     ///
     /// # Example
     /// ```no_run
+    /// # use openrgb2::{OpenRgbClient, OpenRgbResult, Color};
     /// // let's say we have a controller with 5 LEDs
+    /// # async fn example() -> OpenRgbResult<()> {
     /// let mut client = OpenRgbClient::connect().await?;
     /// let controller = client.get_controller(0).await?;
-    ///
     /// // direct write
-    /// controller.set_leds([Color::new(255, 0, 0); 5)]).await?;
-    ///
+    /// controller.set_leds([Color::new(255, 0, 0); 5]).await?;
     /// // equivalent with command
     /// let mut cmd = controller.cmd();
-    /// cmd.add_update_led(0, Color::new(255, 0, 0))?;
-    /// cmd.add_update_led(2, Color::new(255, 0, 0))?; // order doesn't matter
-    /// cmd.add_update_led(4, Color::new(255, 0, 0))?;
-    /// cmd.add_update_led(1, Color::new(255, 0, 0))?;
-    /// cmd.add_update_led(5, Color::new(255, 0, 0))?;
+    /// cmd.add_set_led(0, Color::new(255, 0, 0))?;
+    /// cmd.add_set_led(2, Color::new(255, 0, 0))?; // order doesn't matter
+    /// cmd.add_set_led(4, Color::new(255, 0, 0))?;
+    /// cmd.add_set_led(1, Color::new(255, 0, 0))?;
+    /// cmd.add_set_led(5, Color::new(255, 0, 0))?;
     /// // this is just a single update
-    /// cmd.execute().await?;
+    /// cmd.execute().await
+    /// # }
     /// ```
     ///
     /// This is especially useful for devices with multiple zones that should animate separately.
