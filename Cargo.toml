@@ -7,7 +7,7 @@ authors = [
     "Julien Nicoulaud <julien.nicoulaud@gmail.com>",
     "Arthur de Groot <arthurdegroot99@gmail.com>",
 ]
-description = "OpenRGB SDK client"
+description = "OpenRGB SDK client, successor to openrgb"
 documentation = "https://docs.rs/openrgb2"
 homepage = "https://github.com/Achtuur/openrgb-rs2"
 repository = "https://github.com/Achtuur/openrgb-rs2"
