@@ -30,7 +30,7 @@ async fn main() -> OpenRgbResult<()> {
 
 # Original openrgb-rs
 
-This repository was previously maintained by [nicoulaj](https://github.com/nicoulaj/openrgb-rs). I have attempted to reach out to them, but received no response. As a result I decided to republish the OpenRGB SDK under a new name (`openrgb-rs2`). This makes updating the sdk hard.
+This repository is a clone of the repo previously maintaed by [nicoulaj](https://github.com/nicoulaj/openrgb-rs). I have attempted to reach out to them, but received no response. As a result I decided to republish the OpenRGB SDK under a new name (`openrgb-rs2`).
 
 ## Whats different?
 
