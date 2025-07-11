@@ -45,7 +45,7 @@ flags! {
     }
 }
 
-/// Direction for [Mode](crate::data::Mode).
+/// Direction for [ModeData].
 #[derive(Eq, PartialEq, Debug, Copy, Clone, Default)]
 pub enum Direction {
     /// Left direction.
@@ -143,10 +143,10 @@ pub struct ModeData {
     /// Mode colors.
     pub colors: Vec<Color>,
 
-    /// Mode minimum colors (if mode has non empty [Mode::colors] list).
+    /// Mode minimum colors (if mode has non empty [ModeData::colors] list).
     pub colors_min: u32,
 
-    /// Mode minimum colors (if mode has non empty [Mode::colors] list).
+    /// Mode minimum colors (if mode has non empty [ModeData::colors] list).
     pub colors_max: u32,
 
     /// Mode direction.

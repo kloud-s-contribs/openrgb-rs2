@@ -31,7 +31,7 @@ pub struct OpenRgbClient {
 impl OpenRgbClient {
     /// Connect to default `OpenRGB` server.
     ///
-    /// Use [`OpenRGB::connect_to`] to connect to a specific server.
+    /// Use [`OpenRgbClient::connect_to`] to connect to a specific server.
     ///
     /// # Example
     ///
@@ -51,7 +51,7 @@ impl OpenRgbClient {
 
     /// Connect to `OpenRGB` server at given coordinates.
     ///
-    /// Use [`OpenRGB::connect`] to connect to default server.
+    /// Use [`OpenRgbClient::connect`] to connect to default server.
     ///
     /// # Arguments
     /// * `addr` - A socket address (eg: a `(host, port)` tuple)

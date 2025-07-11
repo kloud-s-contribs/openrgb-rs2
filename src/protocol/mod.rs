@@ -8,10 +8,10 @@ use tokio::sync::Mutex;
 use super::data::{Color, ControllerData, ModeData, RawString, SegmentData};
 use crate::{OpenRgbError, OpenRgbResult, PluginData};
 
-/// Default protocol version used by [`OpenRGB`] client.
+/// Default protocol version used by the [`crate::OpenRgbClient::connect`].
 pub const DEFAULT_PROTOCOL: u32 = 5;
 
-/// Default address used by [`OpenRGB::connect`].
+/// Default address used by [`crate::OpenRgbClient::connect`].
 pub const DEFAULT_ADDR: (Ipv4Addr, u16) = (Ipv4Addr::LOCALHOST, 6742);
 
 /// Device ID to use when no specific device is targeted.

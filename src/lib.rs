@@ -20,7 +20,7 @@
 //! }
 //! ```
 //!
-//! See [examples](https://github.com/nicoulaj/openrgb-rs/tree/master/examples), and [`OpenRGB`] for client API.
+//! See [examples](https://github.com/Achtuur/openrgb-rs2/tree/master/examples), and [`OpenRgbClient`] for client API.
 
 #![warn(missing_docs)]
 #![deny(rustdoc::broken_intra_doc_links)]

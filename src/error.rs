@@ -3,7 +3,7 @@ use thiserror::Error;
 /// Type alias for `Result<T, OpenRgbError>`
 pub type OpenRgbResult<T> = std::result::Result<T, OpenRgbError>;
 
-/// Errors returned by [OpenRGB client](crate::OpenRGB).
+/// Errors that can occur while communicating with the OpenRGB server or creating commands.
 #[derive(Error, Debug)]
 pub enum OpenRgbError {
     /// Failed opening connection to OpenRGB server.

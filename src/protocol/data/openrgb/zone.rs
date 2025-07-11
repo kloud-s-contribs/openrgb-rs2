@@ -7,7 +7,7 @@ use crate::{OpenRgbResult, impl_enum_discriminant};
 
 use super::SegmentData;
 
-/// RGB controller [Zone](crate::data::Zone) type.
+/// RGB controller [ZoneData] type.
 ///
 /// See [Open SDK documentation](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/OpenRGB-SDK-Documentation#zone-data) for more information.
 #[derive(Eq, PartialEq, Debug, Copy, Clone)]
@@ -69,7 +69,7 @@ pub struct ZoneData {
     /// Minimum version: 5
     pub flags: ProtocolOption<5, FlagSet<ZoneFlags>>,
 
-    /// Zone LED matrix (if [Zone::type] is [ZoneType::Matrix]).
+    /// Zone LED matrix (if [ZoneData::zone_type] is [ZoneType::Matrix]).
     ///
     /// Matrix is the "position" of the LEDs in the zone relative to the top left corner.
     ///

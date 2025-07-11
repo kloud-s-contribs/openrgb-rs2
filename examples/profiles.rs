@@ -1,6 +1,5 @@
 use openrgb2::{OpenRgbClient, OpenRgbResult};
 
-
 #[tokio::main]
 async fn main() -> OpenRgbResult<()> {
     // connect to local server
