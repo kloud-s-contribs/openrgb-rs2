@@ -1,14 +1,14 @@
-openrgb-rs2 [![crates.io](https://img.shields.io/crates/v/openrgb.svg)](https://crates.io/crates/openrgb) [![tests](https://github.com/nicoulaj/openrgb-rs/actions/workflows/tests.yml/badge.svg)](https://github.com/nicoulaj/openrgb-rs/actions/workflows/tests.yml)
+openrgb-rs2 [![crates.io](https://img.shields.io/crates/v/openrgb.svg)](https://crates.io/crates/openrgb)
+[![tests](https://github.com/Achtuur/openrgb-rs2/actions/workflows/tests.yml/badge.svg)](https://github.com/Achtuur/openrgb-rs2/actions/workflows/tests.yml)
 ==========
 
 **Rust client library for [OpenRGB SDK](https://openrgb.org).**
 
-See [documentation](https://docs.rs/openrgb) and [examples](https://github.com/nicoulaj/openrgb-rs/tree/master/examples).
-This should support all protocol versions from 1 onwards. If you encounter any issues, please open an issue.
+See [documentation](https://docs.rs/openrgb) and [examples](https://github.com/Achtuur/openrgb-rs2/tree/master/examples).
 
 # Original openrgb-rs
 
-This repository was previously maintained by nicoulaj. I have attempted to reach out to them, but received no response. As a result I decided to republish the OpenRGB SDK under a new name (`openrgb-rs2`). This makes updating the sdk hard.
+This repository was previously maintained by [nicoulaj](https://github.com/nicoulaj/openrgb-rs). I have attempted to reach out to them, but received no response. As a result I decided to republish the OpenRGB SDK under a new name (`openrgb-rs2`). This makes updating the sdk hard.
 
 ## Whats different?
 
