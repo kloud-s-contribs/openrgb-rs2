@@ -4,7 +4,7 @@ openrgb-rs2 [![crates.io](https://img.shields.io/crates/v/openrgb.svg)](https://
 
 **Rust client library for [OpenRGB SDK](https://openrgb.org).**
 
-See [documentation](https://docs.rs/openrgb) and [examples](https://github.com/Achtuur/openrgb-rs2/tree/master/examples).
+See [documentation](https://docs.rs/openrgb2) and [examples](https://github.com/Achtuur/openrgb-rs2/tree/master/examples).
 
 # Example
 
