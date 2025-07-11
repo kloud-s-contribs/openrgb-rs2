@@ -6,6 +6,28 @@ openrgb-rs2 [![crates.io](https://img.shields.io/crates/v/openrgb.svg)](https://
 
 See [documentation](https://docs.rs/openrgb) and [examples](https://github.com/Achtuur/openrgb-rs2/tree/master/examples).
 
+# Example
+
+```rust
+use openrgb2::{OpenRgbClient, OpenRgbResult};
+
+#[tokio::main]
+async fn main() -> OpenRgbResult<()> {
+    // connect to local server
+    let client = OpenRgbClient::connect().await?;
+
+    let controllers = client.get_all_controllers().await?;
+    for c in controllers {
+        println!("controller {}: {:#?}", c.id(), c.name());
+        // the LEDs should now be a rainbow
+        c.init().await?;
+    }
+
+    Ok(())
+}
+```
+
+
 # Original openrgb-rs
 
 This repository was previously maintained by [nicoulaj](https://github.com/nicoulaj/openrgb-rs). I have attempted to reach out to them, but received no response. As a result I decided to republish the OpenRGB SDK under a new name (`openrgb-rs2`). This makes updating the sdk hard.
