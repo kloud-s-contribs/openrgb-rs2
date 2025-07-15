@@ -102,9 +102,9 @@ impl<'a> Zone<'a> {
     /// Equivalent to `cmd().set_zone_leds(self.zone_id(), colors)`.
     ///
     /// The command must be executed by calling `.execute()`
-    pub fn cmd_with_set_leds(
+    pub fn cmd_with_set_leds<C: Into<Color>>(
         &'a self,
-        colors: impl IntoIterator<Item = Color>,
+        colors: impl IntoIterator<Item = C>,
     ) -> OpenRgbResult<Command<'a>> {
         let mut cmd = self.cmd();
         cmd.set_zone_leds(self.zone_id(), colors)?;
@@ -116,7 +116,7 @@ impl<'a> Zone<'a> {
     /// # Errors
     ///
     /// Returns an error if the index is out of bounds for this zone.
-    pub async fn set_led(&self, idx: usize, color: Color) -> OpenRgbResult<()> {
+    pub async fn set_led<C: Into<Color>>(&self, idx: usize, color: C) -> OpenRgbResult<()> {
         if idx >= self.num_leds() {
             return Err(OpenRgbError::CommandError(format!(
                 "Index {idx} out of bounds for zone {} with {} LEDs",
@@ -129,14 +129,18 @@ impl<'a> Zone<'a> {
     }
 
     /// Sets all LEDs in this zone to the given `color`.
-    pub async fn set_all_leds(&self, color: Color) -> OpenRgbResult<()> {
+    pub async fn set_all_leds<C: Into<Color>>(&self, color: C) -> OpenRgbResult<()> {
+        let color = color.into();
         let colors = (0..self.num_leds()).map(|_| color);
         self.set_leds(colors).await
     }
 
     /// Sets the LEDs in this zone to the given colors.
-    pub async fn set_leds(&self, colors: impl IntoIterator<Item = Color>) -> OpenRgbResult<()> {
-        let color_v = colors.into_iter().collect::<Vec<_>>();
+    pub async fn set_leds<C: Into<Color>>(
+        &self,
+        colors: impl IntoIterator<Item = C>,
+    ) -> OpenRgbResult<()> {
+        let mut color_v = colors.into_iter().map(Into::into).collect::<Vec<_>>();
         if color_v.len() >= self.num_leds() {
             tracing::warn!(
                 "Zone {} for controller {} was given {} colors, while its length is {}. This might become a hard error in the future.",
@@ -145,11 +149,16 @@ impl<'a> Zone<'a> {
                 color_v.len(),
                 self.num_leds()
             );
+        } else if color_v.len() < self.num_leds() {
+            color_v.extend((color_v.len()..self.num_leds()).map(|_| Color::default()))
         }
+
         self.controller.set_zone_leds(self.zone_id(), color_v).await
     }
 
     /// Adds a segment to this zone.
+    ///
+    /// Controller data must be resynced using [`Controller::sync_controller_data()`]
     pub async fn add_segment(
         &self,
         name: impl Into<String>,
@@ -174,11 +183,15 @@ impl<'a> Zone<'a> {
 
     /// Clears the segments for this CONTROLLER.
     /// This clears all segments for all zones of the controller, not just this zone.
+    ///
+    /// Controller data must be resynced using [`Controller::sync_controller_data()`]
     pub async fn clear_segments(&self) -> OpenRgbResult<()> {
         self.controller.clear_segments().await
     }
 
     /// Resizes this zone to a new size.
+    ///
+    /// Controller data must be resynced using [`Controller::sync_controller_data()`]
     pub async fn resize(&self, new_size: usize) -> OpenRgbResult<()> {
         self.controller
             .proto()
