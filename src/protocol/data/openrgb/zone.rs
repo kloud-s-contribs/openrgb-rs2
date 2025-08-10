@@ -38,7 +38,7 @@ flags! {
 ///
 /// See [Open SDK documentation](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/OpenRGB-SDK-Documentation#zone-data) for more information.
 #[derive(Debug, Clone, Eq, PartialEq)]
-pub(crate) struct ZoneData {
+pub struct ZoneData {
     /// Id of this zone.
     ///
     /// Not part of the packet, but set right after reading

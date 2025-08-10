@@ -53,9 +53,9 @@ impl<'a> Zone<'a> {
             #[call(leds_count)]
             pub fn num_leds(&self) -> usize;
 
-            pub(crate) fn segments(&self) -> Option<&[SegmentData]>;
+            pub fn segments(&self) -> Option<&[SegmentData]>;
             #[allow(unused)]
-            pub(crate) fn matrix(&self) -> Option<&Array2D<u32>>;
+            pub fn matrix(&self) -> Option<&Array2D<u32>>;
         }
     }
 

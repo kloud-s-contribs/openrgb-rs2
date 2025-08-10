@@ -74,9 +74,11 @@ impl Controller {
             pub fn modes(&self) -> &[ModeData];
             /// Returns the LEDs in this controller
             #[allow(unused)]
-            pub(crate) fn leds(&self) -> &[Led];
-            pub(crate) fn zones(&self) -> &[ZoneData];
-            pub(crate) fn active_mode(&self) -> Option<&ModeData>;
+            pub fn leds(&self) -> &[Led];
+            #[allow(unused)]
+            pub fn zones(&self) -> &[ZoneData];
+            #[allow(unused)]
+            pub fn active_mode(&self) -> Option<&ModeData>;
         }
     }
 
