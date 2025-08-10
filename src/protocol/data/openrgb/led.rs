@@ -5,7 +5,7 @@ use crate::protocol::{DeserFromBuf, ReceivedMessage};
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub struct Led {
     /// LED name.
-    name: String,
+    pub name: String,
 
     /// LED value.
     ///
