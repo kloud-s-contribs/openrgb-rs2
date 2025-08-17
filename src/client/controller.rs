@@ -105,20 +105,23 @@ impl Controller {
     /// Sets this controller to a controllable mode.
     pub async fn set_controllable_mode(&self) -> OpenRgbResult<()> {
         // order: "direct", "custom", "static"
-        let mode = self
-            .get_mode_if_contains("direct")
-            .or(self.get_mode_if_contains("custom"))
-            .or(self.get_mode_if_contains("static"))
-            .ok_or(OpenRgbError::ProtocolError(
-                "No controllable mode found".to_string(),
-            ))?
-            .clone();
+        self.set_mode(
+            self.get_mode_if_contains("direct")
+                .or(self.get_mode_if_contains("custom"))
+                .or(self.get_mode_if_contains("static"))
+                .ok_or(OpenRgbError::ProtocolError(
+                    "No controllable mode found".to_string(),
+                ))?,
+        )
+        .await?;
 
+        Ok(())
+    }
+
+    /// Sets the mode for this controller
+    pub async fn set_mode(&self, mode: &ModeData) -> OpenRgbResult<()> {
         tracing::debug!("Setting {} to {} mode", self.name(), mode.name());
-
-        // just do both I guess
-        self.proto.update_mode(self.id as u32, &mode).await?;
-        // self.proto.save_mode(self.id as u32, &mode).await
+        self.proto.update_mode(self.id as u32, mode).await?;
         Ok(())
     }
 
