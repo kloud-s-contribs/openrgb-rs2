@@ -102,19 +102,20 @@ impl Controller {
         Ok(())
     }
 
+    /// Get first controllable mode for this controller
+    pub fn get_controllable_mode(&self) -> Result<&ModeData, OpenRgbError> {
+        // order: "direct", "custom", "static"
+        self.get_mode_if_contains("direct")
+            .or(self.get_mode_if_contains("custom"))
+            .or(self.get_mode_if_contains("static"))
+            .ok_or(OpenRgbError::ProtocolError(
+                "No controllable mode found".to_string(),
+            ))
+    }
+
     /// Sets this controller to a controllable mode.
     pub async fn set_controllable_mode(&self) -> OpenRgbResult<()> {
-        // order: "direct", "custom", "static"
-        self.set_mode(
-            self.get_mode_if_contains("direct")
-                .or(self.get_mode_if_contains("custom"))
-                .or(self.get_mode_if_contains("static"))
-                .ok_or(OpenRgbError::ProtocolError(
-                    "No controllable mode found".to_string(),
-                ))?,
-        )
-        .await?;
-
+        self.set_mode(self.get_controllable_mode().unwrap()).await?;
         Ok(())
     }
 
