@@ -190,6 +190,9 @@ impl ModeData {
     pub fn set_brightness(&mut self, b: u32) {
         if self.flags.contains(ModeFlag::HasBrightness) {
             self.brightness.replace(b);
+            // Dirty hack, settings brightness is not working for some reason
+            self.brightness_min.replace(b);
+            self.brightness_max.replace(b);
         }
     }
 
