@@ -3,8 +3,8 @@ use crate::{DeserFromBuf, RawSlice, ReceivedMessage, SerToBuf};
 /// Should be followed by a
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct MatrixMapData {
-    height: u32,
-    width: u32,
+    pub height: u32,
+    pub width: u32,
     // data is always of length `self.width * self.height`
     data: Vec<u32>,
 }

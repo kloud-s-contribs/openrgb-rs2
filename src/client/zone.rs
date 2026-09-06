@@ -31,6 +31,11 @@ impl<'c> Zone<'c> {
         self.zone_data.id()
     }
 
+    /// LED matrix of this zone.
+    pub fn zone_matrix(&self) -> Option<&MatrixMapData> {
+        self.zone_data.matrix()
+    }
+
     delegate::delegate! {
         to self.zone_data {
             /// Returns the ID of this zone.
